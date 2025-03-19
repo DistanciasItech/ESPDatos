@@ -8,19 +8,28 @@
         body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
         h1 { color: #333; }
         #data { font-size: 24px; font-weight: bold; color: #007bff; }
+        #timestamp { font-size: 16px; color: #666; margin-top: 10px; }
     </style>
 </head>
 <body>
     <h1>Datos del Sensor de Distancia</h1>
     <p>Último valor medido:</p>
     <p id="data">Esperando datos...</p>
+    <p id="timestamp">Fecha y hora de la última actualización: --</p>
 
     <script>
         async function obtenerDatos() {
             try {
                 const response = await fetch("https://raw.githubusercontent.com/DistanciasItech/ESPDatos/main/datos.json");
                 const data = await response.json();
+
+                // Mostrar el dato recibido
                 document.getElementById("data").innerText = `Distancia: ${data.sensor1} cm`;
+
+                // Obtener la hora y fecha actual del navegador
+                const ahora = new Date();
+                const fechaHora = ahora.toLocaleString();
+                document.getElementById("timestamp").innerText = `Fecha y hora de la última actualización: ${fechaHora}`;
             } catch (error) {
                 console.error("Error obteniendo datos:", error);
             }
@@ -32,3 +41,4 @@
     </script>
 </body>
 </html>
+
