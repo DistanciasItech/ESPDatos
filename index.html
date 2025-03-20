@@ -21,7 +21,9 @@
     <script>
         async function obtenerDatos() {
             try {
-                const response = await fetch("https://raw.githubusercontent.com/DistanciasItech/ESPDatos/main/datos.json");
+                // Agregar un timestamp a la URL para evitar caché
+                const timestamp = new Date().getTime();
+                const response = await fetch(`https://raw.githubusercontent.com/DistanciasItech/ESPDatos/main/datos.json?nocache=${timestamp}`);
                 const data = await response.json();
 
                 // Verificar valores de los sensores y formatear salida
