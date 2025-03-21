@@ -14,8 +14,7 @@
 <body>
     <h1>Datos del Sensor de Distancia</h1>
     <p id="sensor1" class="sensor">Sensor 1: Esperando datos...</p>
-    <p id="sensor2" class="sensor">Sensor 2: Esperando datos...</p>
-    <p id="sensor3" class="sensor">Sensor 3: Esperando datos...</p>
+    <p id="sensor2" class="sensor">Sensor 2: Esperando datos...</p>    
     <p id="timestamp">Fecha y hora de la última actualización: --</p>
 
     <script>
@@ -29,7 +28,7 @@
                 // Verificar valores de los sensores y formatear salida
                 document.getElementById("sensor1").innerText = `Sensor 1: ${data.sensor1 == -1 ? "Desconectado" : data.sensor1 + " cm"}`;
                 document.getElementById("sensor2").innerText = `Sensor 2: ${data.sensor2 == -1 ? "Desconectado" : data.sensor2 + " cm"}`;
-                document.getElementById("sensor3").innerText = `Sensor 3: ${data.sensor3 == -1 ? "Desconectado" : data.sensor3 + " cm"}`;
+               
 
                 // Obtener fecha de modificación del archivo en GitHub
                 const responseMeta = await fetch("https://api.github.com/repos/DistanciasItech/ESPDatos/commits?path=datos.json");
